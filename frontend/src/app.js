@@ -17,7 +17,7 @@ const App = ({
         <Router>
             <Nav />
             <Routes>
-                <Route path='/home' element={<HomePage />} />
+                <Route path='/' element={<HomePage />} />
                 <Route path='/students' element={<BrowseStudentsPage />} />
 
                 <Route path='/students/:homeworkID' element={<StudentHomeworkPage />} />
