@@ -16,12 +16,12 @@ const app = ({
         <Router>
             <Routes>
                 <Route path='/home' element={<HomePage />} />
-                <Route path='/' element={<HomePage />} />
-                <Route path='/home' element={<HomePage />} />
-                <Route path='/home' element={<HomePage />} />
-                <Route path='/home' element={<HomePage />} />
-                <Route path='/home' element={<HomePage />} />
-                <Route path='/home' element={<HomePage />} />
+                <Route path='/students' element={<BrowseStudentsPage />} />
+                <Route path='/login' element={<LogInPage />} />
+                <Route path='/mysubmissions/:submissionID' element={<MySubmissionPage />} />
+                <Route path='/mysubmissions' element={<MySubmissionsPage />} />
+                <Route path='/post' element={<PostPage />} />
+                <Route path='/students/:homeworkID' element={<StudentHomeworkPage />} />
             </Routes> 
         </Router>
     );
