@@ -6,11 +6,10 @@ const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcryptjs');
 const Student = require('../models/student');
 
-router.post('/', (req, res) => {
-    passport.authenticate("local", {
-        successRedirect: '/login',
-        failureRedirect: '/login',
-    });
+router.post('/', passport.authenticate("local", {
+    successRedirect: '/login',
+    failureRedirect: '/login',
+}), (req, res) => {
     res.json('Authenticated user', req.user);
 });
 
