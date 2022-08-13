@@ -1,11 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
 
-const LogInPage = ({
+const SignUpPage = ({
 
 }) => {
     return (
         <div>
-            <h1>Login</h1>
+            <h1>Sign Up</h1>
             <form action='' method='POST'>
                 <label for='username'>Username</label>
                 <input name='username' id='username' />
@@ -16,4 +16,4 @@ const LogInPage = ({
     );
 }
 
-export { LogInPage };
+export { SignUpPage };

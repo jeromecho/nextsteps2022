@@ -11,6 +11,7 @@ const Nav = ({
             <Link to='/students'>BROWSE</Link>
             <Link to='/mysubmissions'>MY SUBMISSIONS</Link>
             <Link to='/login'>LOGIN</Link>
+            <Link to='/signup'>SIGN UP</Link>
         </nav>
     );
 }

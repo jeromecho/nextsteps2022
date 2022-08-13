@@ -9,10 +9,26 @@ import { MySubmissionsPage }from './pages/MySubmissionsPage';
 import { PostPage } from './pages/PostPage';
 import { StudentHomeworkPage } from './pages/StudentHomeworkPage';
 import { Nav } from './components/Nav';
+import { SignUpPage } from './pages/SignUpPage';
 
 const App = ({
 
 }) => {
+    const [apiResponse, setApiResponse] = useState(null);
+
+    const callAPI = () => {
+        fetch("http:/localhost:3000/")
+            .then(res => res.text())
+            .then(res => {
+                console.log(res);
+                setApiResponse(res);
+            });
+    };
+
+    useEffect(() => {
+        callAPI();
+    }, []);
+
     return (
         <Router>
             <Nav />
@@ -22,6 +38,7 @@ const App = ({
 
                 <Route path='/students/:homeworkID' element={<StudentHomeworkPage />} />
                 <Route path='/login' element={<LogInPage />} />
+                <Route path='/signup' element={<SignUpPage />} />
                 <Route path='/mysubmissions/:submissionID' element={<MySubmissionPage />} />
                 <Route path='/mysubmissions' element={<MySubmissionsPage />} />
                 <Route path='/post' element={<PostPage />} />
