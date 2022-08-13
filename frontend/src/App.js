@@ -10,23 +10,16 @@ import { PostPage } from './pages/PostPage';
 import { StudentHomeworkPage } from './pages/StudentHomeworkPage';
 import { Nav } from './components/Nav';
 import { SignUpPage } from './pages/SignUpPage';
+import axios from 'axios';
 
 const App = ({
 
 }) => {
-    const [apiResponse, setApiResponse] = useState(null);
-
-    const callAPI = () => {
-        fetch("http:/localhost:3000/")
-            .then(res => res.text())
-            .then(res => {
-                console.log(res);
-                setApiResponse(res);
-            });
-    };
 
     useEffect(() => {
-        callAPI();
+        axios.get('http://localhost:3000/')
+            .then(val => console.log(val))
+            .catch(err => console.log(err));
     }, []);
 
     return (

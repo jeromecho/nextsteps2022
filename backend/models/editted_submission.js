@@ -6,5 +6,5 @@ const EdittedSubmissionSchema = new Schema({
     submission: {type: Schema.Types.ObjectId, required: true },
 });
 
-module.exports = mongoose.model('EdittedSubmission', SubmissionSchema);
+module.exports = mongoose.model('EdittedSubmission', EdittedSubmissionSchema);
 
