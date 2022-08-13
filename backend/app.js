@@ -7,6 +7,11 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var mongoose = require('mongoose');
 var cors = require('cors');
+var session = require('express-session');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+const bcrypt = require('bcryptjs');
+const Student = require('./models/student');
 require('dotenv').config();
 
 mongoose.connect(process.env.MONGODB_URI);
@@ -17,12 +22,54 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
+passport.use(
+    new LocalStrategy((username, password, done) => {
+        Student.findOne({ username: username }, (err, user) => {
+            if (err) { 
+                return done(err);
+            } else if (!user) {
+                return done(null, false, {
+                    message: "Incorrect username"
+                });
+            } else {
+                bcrypt.compare(password, user.password, (err, res) => {
+                    if (res) { 
+                        return done(null, user);
+                    }
+                    return done(null, false, { message: "Incorrect password" });
+                });
+            }
+        });
+    })
+);
+
+passport.serializeUser(function(student, done) {
+    done(null, student.id);
+});
+
+passport.deserializeUser(function(student, done) {
+    Student.findById(id, function (err, student) {
+        done(null, student);
+    });
+});
+
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true,
+}))
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use((req, res, next) => {
+    res.locals.currentUser = req.user; 
+    next();
+});
 
 app.use('/', indexRouter);
 
