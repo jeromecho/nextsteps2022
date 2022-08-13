@@ -3,7 +3,7 @@ var router = express.Router();
 var loginRouter = require('./login');
 var signupRouter = require('./signup');
 var postRouter = require('./post');
-var studentsRouter = require('./students');
+var studentsSubmissionsRouter = require('./student_submissions');
 var submissionsRouter = require('./mysubmissions');
 
 /* GET home page. */
@@ -15,7 +15,9 @@ router.use('/login',loginRouter);
 router.use('/signup', signupRouter);
 /*
 router.use('/post', postRouter);
-router.use('/students', studentsRouter);
+*/
+router.use('/student_submissions', studentsSubmissionsRouter);
+/*
 router.use('/mysubmissions', submissionsRouter);
 */
 

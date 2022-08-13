@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Homepage } from './pages/Homepage';
-import { BrowseStudentsPage } from './pages/BrowseStudentsPage';
+import { BrowseStudentsSubmissionsPage } from './pages/BrowseStudentsPage';
 import { LogInPage } from './pages/LogInPage';
 import { MySubmissionPage } from './pages/MySubmissionPage';
 import { MySubmissionsPage }from './pages/MySubmissionsPage';
@@ -30,9 +30,9 @@ const App = ({
             <Nav />
             <Routes>
                 <Route path='/' element={<Homepage />} />
-                <Route path='/students' element={<BrowseStudentsPage />} />
+                <Route path='/student_submissions' element={<BrowseStudentsSubmissionsPage />} />
 
-                <Route path='/students/:homeworkID' element={<StudentHomeworkPage />} />
+                <Route path='/student_submissions/:homeworkID' element={<StudentHomeworkPage />} />
                 <Route path='/login' element={<LogInPage />} />
                 <Route path='/signup' element={<SignUpPage />} />
                 <Route path='/mysubmissions/:submissionID' element={<MySubmissionPage />} />

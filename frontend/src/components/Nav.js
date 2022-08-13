@@ -8,7 +8,7 @@ const Nav = ({
         <nav>
             <Link to='/'>LOGO</Link>
             <Link to='/post'>POST</Link>
-            <Link to='/students'>BROWSE</Link>
+            <Link to='/student_submissions'>BROWSE</Link>
             <Link to='/mysubmissions'>MY SUBMISSIONS</Link>
             <Link to='/login'>LOGIN</Link>
             <Link to='/signup'>SIGN UP</Link>

@@ -1,0 +1,35 @@
+:root {
+    --nav-bg: #EED9C4;
+    --main-bg: #FFF0DB;
+    --main-font-family: 'Indie Flower', cursive;
+    font-family: var(--main-font-family);
+}
+
+html, body, #root  {
+    height: 100%;
+    width: 100%;
+}
+
+nav {
+    background-color: black;
+    background-color: var(--nav-bg);
+    height: 4rem;
+    width: 100%;
+}
+
+main {
+    background-color: var(--main-bg);
+    height: fit-content;
+    min-height: 100%;
+    width: 100%;
+}
+
+main > .left {
+    margin: 3rem;
+}
+
+main > .right {
+    display: flex;
+    margin: 3rem;
+    flex-direction: column;
+}
