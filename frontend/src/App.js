@@ -12,6 +12,9 @@ import { Nav } from './components/Nav';
 import { SignUpPage } from './pages/SignUpPage';
 import axios from 'axios';
 
+// Force credentials on every Axios request
+axios.defaults.withCredentials = true;
+
 const App = ({
 
 }) => {

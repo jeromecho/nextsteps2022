@@ -18,21 +18,24 @@ mongoose.connect(process.env.MONGODB_URI);
 
 var app = express();
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+app.use(cors({ origin: true, credentials: true }));
 
 passport.use(
     new LocalStrategy((username, password, done) => {
         Student.findOne({ username: username }, (err, user) => {
             if (err) { 
+                console.log('err');
                 return done(err);
             } else if (!user) {
+                console.log('no user');
                 return done(null, false, {
                     message: "Incorrect username"
                 });
             } else {
                 bcrypt.compare(password, user.password, (err, res) => {
+                    if (err) { 
+                        return next(err);
+                    }
                     if (res) { 
                         return done(null, user);
                     }
@@ -60,7 +63,6 @@ app.use(session({
 }))
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

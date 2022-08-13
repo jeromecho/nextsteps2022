@@ -27,10 +27,11 @@ const LogInPage = ({
 
         await axios.post('http://localhost:3000/login', studentObject)
             .then((res) => {
-                console.log(`Success! - ${res.data}`);
+                console.log(res);
+                // console.log(`Success! - ${res.data}`);
             })
             .catch((err) => {
-                console.log(err.response.data);
+                console.log(err.response);
             });
 
         setUsername('');
