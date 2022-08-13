@@ -8,20 +8,23 @@ import { MySubmissionPage } from './pages/MySubmissionPage';
 import { MySubmissionsPage }from './pages/MySubmissionsPage';
 import { PostPage } from './pages/PostPage';
 import { StudentHomeworkPage } from './pages/StudentHomeworkPage';
+import { Nav } from './components/Nav';
 
 const App = ({
 
 }) => {
     return (
         <Router>
+            <Nav />
             <Routes>
                 <Route path='/home' element={<HomePage />} />
                 <Route path='/students' element={<BrowseStudentsPage />} />
+
+                <Route path='/students/:homeworkID' element={<StudentHomeworkPage />} />
                 <Route path='/login' element={<LogInPage />} />
                 <Route path='/mysubmissions/:submissionID' element={<MySubmissionPage />} />
                 <Route path='/mysubmissions' element={<MySubmissionsPage />} />
                 <Route path='/post' element={<PostPage />} />
-                <Route path='/students/:homeworkID' element={<StudentHomeworkPage />} />
             </Routes> 
         </Router>
     );
