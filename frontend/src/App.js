@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { HomePage } from './pages/Homepage';
+import { Homepage } from './pages/Homepage';
 import { BrowseStudentsPage } from './pages/BrowseStudentsPage';
 import { LogInPage } from './pages/LogInPage';
 import { MySubmissionPage } from './pages/MySubmissionPage';
@@ -17,7 +17,7 @@ const App = ({
         <Router>
             <Nav />
             <Routes>
-                <Route path='/' element={<HomePage />} />
+                <Route path='/' element={<Homepage />} />
                 <Route path='/students' element={<BrowseStudentsPage />} />
 
                 <Route path='/students/:homeworkID' element={<StudentHomeworkPage />} />
